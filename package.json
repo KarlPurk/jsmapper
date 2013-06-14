@@ -1,0 +1,10 @@
+{
+    "name": "jsmapper",
+    "version": "0.0.1",
+    "author": "Karl Purkhardt",
+    "description": "A lightweight mapper written in javascript",
+    "main": "packages/jsmapper/mapper.js",
+    "devDependencies": {
+        "grunt": "~0.4.1"
+    }
+}
