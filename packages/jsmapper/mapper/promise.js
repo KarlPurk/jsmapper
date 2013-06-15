@@ -6,8 +6,8 @@
 (function() {
     "use strict";
 
-    var Mapper = require('./mapper.js');
-    var PromiseArray = require('./promise-array.js');
+    var Mapper = require('./default.js');
+    var PromiseArray = require('./../util/promise-array.js');
 
     /**
      * Promise Mapper constructor

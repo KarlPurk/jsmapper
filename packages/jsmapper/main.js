@@ -2,16 +2,16 @@
 
     module.exports = {
         Mapper: {
-            Default: require('./mapper.js'),
-            Promise: require('./promise-mapper.js')
+            Default: require('./mapper/default.js'),
+            Promise: require('./mapper/promise.js')
         },
         Transport: {
-            Default: require('./transport-default.js'),
-            JQuery: require('./transport-jquery.js'),
-            XmlHttpRequest: require('./transport-xml-http-request.js')
+            Default: require('./transport/default.js'),
+            JQuery: require('./transport/jquery.js'),
+            XmlHttpRequest: require('./transport/xml-http-request.js')
         },
         Util: {
-            PromiseArray: require('./promise-array.js')
+            PromiseArray: require('./util/promise-array.js')
         }
     };
 })();

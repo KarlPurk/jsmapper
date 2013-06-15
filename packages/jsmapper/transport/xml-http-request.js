@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    var DefaultTransport = require('./transport-default.js');
+    var DefaultTransport = require('./default.js');
 
     /**
      * XmlHttpRequestMapperTransport
