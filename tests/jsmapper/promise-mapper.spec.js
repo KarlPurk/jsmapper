@@ -1,6 +1,6 @@
 describe("Promise Mapper", function () {
 
-    var PromiseMapper = require('./../../packages/jsmapper/main.js').Mapper.Promise;
+    var PromiseMapper = require('./../../packages/jsmapper/loader').load('/mapper/promise');
 
     var promiseMapper = new PromiseMapper();
 

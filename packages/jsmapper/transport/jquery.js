@@ -1,7 +1,7 @@
 (function() {
     "use strict";
 
-    var DefaultTransport = require('./default.js');
+    var DefaultTransport = require('./../loader').load('/transport/default');
 
     /**
      * JQueryMapperTransport constructor
