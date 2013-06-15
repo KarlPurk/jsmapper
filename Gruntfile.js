@@ -31,12 +31,96 @@ module.exports = function(grunt) {
                     outdir: 'docs/yui'
                 }
             }
+        },
+        concat: {
+            dist: {
+                options: {
+                    banner: this.file.read('./packages/jsmapper-browser/main.js')
+                },
+                src: ['packages/jsmapper/transport/*.js', 'packages/jsmapper/util/*.js', 'packages/jsmapper/mapper/*.js'],
+                dest: 'dist/jsmapper.js'
+            },
+            "browser-tests": {
+                src: [  'tests/jsmapper/mapper.spec.js',
+                        'tests/jsmapper/promise-mapper.spec.js',
+                        'tests/jsmapper/transport-default.spec.js',
+                        'tests/jsmapper/transport-jquery.spec.js'],
+                dest: 'dist/specs.js'
+            }
+        },
+        "regex-replace": {
+            dist: {
+                src: ['dist/jsmapper.js', 'dist/specs.js'],
+                actions: [
+                    {
+                        name: 'Replace require() calls',
+                        search: "require\\('.*?/loader'\\)\\.load\\('(.*?)(?:\\.js)?'\\)",
+                        replace: function() {
+                            var path = arguments[1];
+                            path = path.replace(/^\/([a-z])/i, '$1');
+                            // Uppercase words
+                            path = path.replace(/^([a-z])|(?:\/|-)([a-z])/g, function ($1) { return $1.toUpperCase(); });
+                            path = path.replace('/', '.');
+                            path = path.replace('-', '');
+
+                            // We want JQuery instead of Jquery so we need to create this hack to achieve it :(
+                            path = path.replace('Transport.Jquery', 'Transport.JQuery');
+                            path = 'JsMapper.' + path;
+                            return path;
+                        },
+                        flags: 'g'
+                    },
+                    {
+                        name: 'Replace module.exports with return',
+                        search: "module.exports\\s+=",
+                        replace: "return",
+                        flags: 'g'
+                    },
+                    {
+                        name: 'Replace node-specifc "var JsMapper =" statements',
+                        search: "^var\\s+JsMapper\\s+=.*?;$\\r\\n",
+                        replace: "",
+                        flags: 'gm'
+                    }
+                ]
+            }
+        },
+        jasmine: {
+            dist: {
+                src: 'dist/jsmapper.js',
+                options: {
+                    specs: 'dist/specs.js'
+                }
+            },
+            "browser-dist-coverage": {
+                src: ['dist/jsmapper.js'],
+                options: {
+                    specs: ['tests/jsmapper/*.js'],
+                    template: require('grunt-template-jasmine-istanbul'),
+                    templateOptions: {
+                        coverage: 'docs/coverage/coverage.json',
+                        report: 'docs/coverage',
+                        thresholds: {
+                            lines: 75,
+                            statements: 75,
+                            branches: 75,
+                            functions: 90
+                        }
+                    }
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-yuidoc');
     grunt.loadNpmTasks('grunt-jasmine-node');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-regex-replace');
 
-    grunt.registerTask('default', ['jshint', 'jasmine_node', 'yuidoc']);
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-template-jasmine-istanbul');
+
+    grunt.registerTask('default', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'yuidoc']);
+    grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage']);
 };
