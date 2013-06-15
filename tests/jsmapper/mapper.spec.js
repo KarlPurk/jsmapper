@@ -1,6 +1,6 @@
 describe("Mapper", function () {
 
-    var Mapper = require('./../../packages/jsmapper/mapper.js');
+    var Mapper = require('./../../packages/jsmapper/main.js').Mapper;
 
     var mapper = new Mapper();
 	
