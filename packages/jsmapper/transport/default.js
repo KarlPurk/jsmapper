@@ -1,9 +1,10 @@
+var JsMapper = {Transport: {}};
 /**
  * Mapper Transport module
  * @type {MapperTransport}
  * @author Karl Purkhardt
  */
-(function() {
+JsMapper.Transport.Default = (function() {
     "use strict";
 
     /**

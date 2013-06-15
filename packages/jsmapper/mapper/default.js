@@ -1,9 +1,10 @@
+var JsMapper = {Mapper: {}};
 /**
  * Mapper module.
  * @type {Mapper}
  * @author Karl Purkhardt
  */
-(function() {
+JsMapper.Mapper.Default = (function() {
     'use strict';
 
     /**

@@ -1,4 +1,5 @@
-(function() {
+var JsMapper = {Transport: {}};
+JsMapper.Transport.JQuery = (function() {
     "use strict";
 
     var DefaultTransport = require('./../loader').load('/transport/default');

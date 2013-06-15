@@ -1,4 +1,5 @@
-(function() {
+var JsMapper = {Util: {}};
+JsMapper.Util.PromiseArray = (function() {
     "use strict";
 
     /**

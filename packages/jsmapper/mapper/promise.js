@@ -1,9 +1,10 @@
+var JsMapper = {Mapper: {}};
 /**
  * Promise Mapper module
  * @type {PromiseMapper}
  * @author Karl Purkhardt
  */
-(function() {
+JsMapper.Mapper.Promise = (function() {
     "use strict";
 
     var Mapper = require('./../loader').load('/mapper/default');
