@@ -1,4 +1,4 @@
-var Mapper = require('./../../packages/jsmapper/mapper.js');
+var Mapper = require('./../../packages/jsmapper/main.js').Mapper.Default;
 
 // Create a very basic person model
 var Person = function() { this.name = 'Unknown'; };

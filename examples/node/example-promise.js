@@ -1,4 +1,4 @@
-var PromiseMapper = require('./../../packages/jsmapper/promise-mapper.js');
+var PromiseMapper = require('./../../packages/jsmapper/main.js').Mapper.Promise;
 
 // Create a very basic person model
 var Person = function() { this.name = 'Unknown'; };
