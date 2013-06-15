@@ -1,10 +1,22 @@
 {
-    "name": "jsmapper",
-    "version": "0.0.1",
-    "author": "Karl Purkhardt",
-    "description": "A lightweight mapper written in javascript",
-    "main": "packages/jsmapper/mapper.js",
-    "devDependencies": {
-        "grunt": "~0.4.1"
-    }
+  "name": "jsmapper",
+  "version": "0.0.1",
+  "author": "Karl Purkhardt",
+  "description": "A lightweight mapper written in javascript",
+  "main": "packages/jsmapper/mapper.js",
+  "dependencies": {
+  },
+  "optionalDependencies": {
+      "w3c-xmlhttprequest": "~1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-jasmine-node": "~0.1.0",
+    "grunt-contrib-yuidoc": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-regex-replace": "~0.2.5",
+    "grunt-contrib-jasmine": "~0.5.0",
+    "grunt-template-jasmine-istanbul": "~0.5.0"
+  }
 }
