@@ -1,3 +1,7 @@
 .grunt
 .idea
 atlassian-ide-plugin.xml
+_SpecRunner.html
+node_modules
+docs/coverage
+docs/jasmine
