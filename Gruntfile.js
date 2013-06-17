@@ -111,7 +111,7 @@ module.exports = function(grunt) {
             }
         },
         copy: {
-            main: {
+            examples: {
                 files: [
                     {expand: true, flatten: true, src: ['dist/jsmapper.min.js'], dest: 'examples/web'}
                 ]
@@ -124,7 +124,10 @@ module.exports = function(grunt) {
                 }
             }
         },
-        clean: ["dist/specs.js"]
+        clean: {
+            "browser-tests": ["dist/specs.js"],
+            "dist": ["dist/*"]
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -139,8 +142,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-template-jasmine-istanbul');
 
-    grunt.registerTask('default', ['build', 'cleanup']);
-    grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy', 'yuidoc']);
-    grunt.registerTask('cleanup', ['clean']);
-    grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage', 'cleanup']);
+    grunt.registerTask('default', ['build', 'clean:browser-tests']);
+    grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy:examples', 'yuidoc']);
+    grunt.registerTask('test', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'clean:dist']);
+    grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage', 'clean:browser-tests']);
 };
