@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 options: {
-                    banner: "var JsMapper = { Mapper: {}, Transport: {}, Util: {}};"
+                    banner: "this.file.read('./packages/jsmapper-browser/main.js')"
                 },
                 src: ['packages/jsmapper/transport/*.js', 'packages/jsmapper/util/*.js', 'packages/jsmapper/mapper/*.js'],
                 dest: 'dist/jsmapper.js'
@@ -145,5 +145,9 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['build', 'clean:browser-tests']);
     grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy:examples', 'yuidoc']);
     grunt.registerTask('test', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'clean:dist']);
+
+    // Node only tests - used on Travis for the moment because browser tests keep failing on Travis :(
+    grunt.registerTask('test-node', ['jshint', 'jasmine_node']);
+
     grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage', 'clean:browser-tests']);
 };

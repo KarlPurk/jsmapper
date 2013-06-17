@@ -23,6 +23,6 @@
     "grunt-contrib-clean": "~0.4.1"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test-node"
   }
 }
