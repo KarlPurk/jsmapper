@@ -109,7 +109,22 @@ module.exports = function(grunt) {
                     }
                 }
             }
-        }
+        },
+        copy: {
+            main: {
+                files: [
+                    {expand: true, flatten: true, src: ['dist/jsmapper.min.js'], dest: 'examples/web'}
+                ]
+            }
+        },
+        uglify: {
+            dist: {
+                files: {
+                    'dist/jsmapper.min.js': ['dist/jsmapper.js']
+                }
+            }
+        },
+        clean: ["dist/specs.js"]
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -117,10 +132,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-jasmine-node');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-regex-replace');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-template-jasmine-istanbul');
 
-    grunt.registerTask('default', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'yuidoc']);
-    grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage']);
+    grunt.registerTask('default', ['build', 'cleanup']);
+    grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy', 'yuidoc']);
+    grunt.registerTask('cleanup', ['clean']);
+    grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage', 'cleanup']);
 };
