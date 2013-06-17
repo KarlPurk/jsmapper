@@ -18,7 +18,7 @@ JsMapper.Transport.XmlHttpRequest = (function() {
     XmlHttpRequestMapperTransport.prototype.createXmlHttpRequest = function() {
 
         // Require the XMLHttpRequest module
-        var XMLHttpRequest = require('w3c-xmlhttprequest').XMLHttpRequest;
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
         // Create a new xml http request object
         return new XMLHttpRequest();
