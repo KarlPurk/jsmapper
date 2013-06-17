@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/KarlPurk/jsmapper.png)](https://travis-ci.org/KarlPurk/jsmapper)
+
 # JS Mapper #
 
 JS Mapper is an implementation of the mapper pattern written in JavaScript.  It works on both node.js and in the browser.
@@ -7,7 +9,7 @@ JS Mapper is an implementation of the mapper pattern written in JavaScript.  It 
 JS Mapper also features a "promise" mapper.  Which is essentially an asynchronous mapper that works in a synchronous way.  For example, when you call `fetchAll()` you will be given an array back immediately.  When the data is returned from the server a property on the array (`isLoaded`) will be set to true which you can then respond to.
 
 ## Node Installation ##
-Not currently available as an npm.  Please clone repo and type `npm install`.
+Working on Node.js v0.8+.  Not currently available as an npm.  Please clone repo and type `npm install`.
 
 ## Browser Installation ##
 Download `dist/jsmapper.js` or `dist/jsmapper.min.js`.
