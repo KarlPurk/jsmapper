@@ -35,7 +35,7 @@ module.exports = function(grunt) {
         concat: {
             dist: {
                 options: {
-                    banner: "this.file.read('./packages/jsmapper-browser/main.js')"
+                    banner: this.file.read('./packages/jsmapper-browser/main.js')
                 },
                 src: ['packages/jsmapper/transport/*.js', 'packages/jsmapper/util/*.js', 'packages/jsmapper/mapper/*.js'],
                 dest: 'dist/jsmapper.js'
