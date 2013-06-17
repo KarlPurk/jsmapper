@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-jasmine-node": "~0.1.0",
     "grunt-contrib-yuidoc": "~0.4.0",
