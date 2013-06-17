@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JS Mapper Basic Example</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <script src="jsmapper.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<script type="text/javascript">
+
+    var personMapper;
+
+    // Create a very basic person model
+    var Person = function() { this.name = 'Unknown'; };
+
+    // Give the person model a getName method
+    Person.prototype.getName = function() { return this.name; };
+
+    // Create a new person mapper
+    personMapper = new JsMapper.Mapper.Promise();
+
+    // Overload the load method to provide logic for mapping to a person model
+    personMapper.createModel = function(item) {
+        return new Person();
+    };
+
+    // Create a fake transport object that returns a JSON string
+    personMapper.setTransport({
+        request: function(options) {
+            setTimeout(function() {
+                options.onSuccess('[{"name": "Karl"},{"name":"John"},{"name":"Bob"}]');
+            }, 1500);
+        }
+    });
+
+    // Fetch many person models from a backend data store
+    var collection = personMapper.fetchMany({url: 'http://some/url'});
+
+    // Keep checking the collection until some models are returned by the promise
+    var interval = setInterval(function() {
+
+        // The promise has an isLoaded method to check if the request has finished
+        // Keep outputting a not loaded message while we wait for the promise to be filled
+        if (!collection.isLoaded) {
+            document.write('Not loaded yet<br />');
+            return;
+        }
+
+        clearInterval(interval);
+
+        // Loop through the models returned from the promise
+        collection.forEach(function(model) {
+
+            // Output the result of the getName method call for each mapped model
+            document.write(model.getName() + '<br />');
+        });
+    }, 1000);
+
+</script>
+</body>
+</html>

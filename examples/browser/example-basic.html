@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>JS Mapper Basic Example</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <script src="jsmapper.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+<script type="text/javascript">
+
+    // Create a very basic person model
+    var Person = function() { this.name = 'Unknown'; };
+    var personMapper;
+
+    // Give the person model a getName method
+    Person.prototype.getName = function() { return this.name; };
+
+    // Create a new person mapper
+    personMapper = new JsMapper.Mapper.Default();
+
+    // Overload the createModel and return a person model to wrap an object with
+    personMapper.createModel = function(item) {
+        return new Person();
+    };
+
+    // Map two objects to person models and call the getName method on the person models
+    console.log(personMapper.load({name: 'Karl'}).getName());
+    console.log(personMapper.load({name: 'Bob'}).getName());
+
+    // Map a collection of objects to person models
+    personMapper.loadMany([{name: 'John'}, {name: 'Jack'}]).forEach(function(model) {
+        // Output the result of the getName method call for each mapped model
+        document.write(model.getName() + '<br />');
+    });
+
+</script>
+</body>
+</html>
