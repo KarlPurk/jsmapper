@@ -139,7 +139,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-template-jasmine-istanbul');
 
     grunt.registerTask('default', ['build', 'clean:browser-tests']);
-    grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy:examples', 'yuidoc']);
+    grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy:examples', 'yuidoc', 'clean:browser-tests']);
     grunt.registerTask('test', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'clean:dist']);
 
     // Node only tests - used on Travis for the moment because browser tests keep failing :(
