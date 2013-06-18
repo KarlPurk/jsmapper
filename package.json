@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "Karl Purkhardt",
   "description": "A lightweight mapper written in javascript",
-  "main": "packages/jsmapper/mapper.js",
+  "main": "packages/jsmapper/main.js",
   "dependencies": {},
   "optionalDependencies": {
     "xmlhttprequest": "~1.5.0"

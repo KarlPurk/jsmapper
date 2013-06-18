@@ -41,10 +41,7 @@ module.exports = function(grunt) {
                 dest: 'dist/jsmapper.js'
             },
             "browser-tests": {
-                src: [  'tests/jsmapper/mapper.spec.js',
-                        'tests/jsmapper/promise-mapper.spec.js',
-                        'tests/jsmapper/transport-default.spec.js',
-                        'tests/jsmapper/transport-jquery.spec.js'],
+                src: ['tests/jsmapper/*.js'],
                 dest: 'dist/specs.js'
             }
         },
@@ -60,9 +57,8 @@ module.exports = function(grunt) {
                             path = path.replace(/^\/([a-z])/i, '$1');
                             // Uppercase words
                             path = path.replace(/^([a-z])|(?:\/|-)([a-z])/g, function ($1) { return $1.toUpperCase(); });
-                            path = path.replace('/', '.');
-                            path = path.replace('-', '');
-
+                            path = path.replace(/[\/]/g, '.');
+                            path = path.replace(/[-]+/g, '');
                             // We want JQuery instead of Jquery so we need to create this hack to achieve it :(
                             path = path.replace('Transport.Jquery', 'Transport.JQuery');
                             path = 'JsMapper.' + path;
@@ -113,7 +109,7 @@ module.exports = function(grunt) {
         copy: {
             examples: {
                 files: [
-                    {expand: true, flatten: true, src: ['dist/jsmapper.min.js'], dest: 'examples/web'}
+                    {expand: true, flatten: true, src: ['dist/jsmapper.min.js'], dest: 'examples/browser'}
                 ]
             }
         },
@@ -146,7 +142,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'uglify', 'copy:examples', 'yuidoc']);
     grunt.registerTask('test', ['jshint', 'jasmine_node', 'concat', 'regex-replace', 'jasmine:dist', 'clean:dist']);
 
-    // Node only tests - used on Travis for the moment because browser tests keep failing on Travis :(
+    // Node only tests - used on Travis for the moment because browser tests keep failing :(
     grunt.registerTask('test-node', ['jshint', 'jasmine_node']);
 
     grunt.registerTask('browser-dist-coverage', ['default', 'jasmine:browser-dist-coverage', 'clean:browser-tests']);
