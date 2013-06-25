@@ -19,7 +19,7 @@ JsMapper.Mapper.Promise = (function() {
     /**
      * Extend the default Mapper
      */
-    PromiseMapper.prototype = Object.create(Mapper.prototype);
+    PromiseMapper.prototype = new Mapper();
 
     /**
      * This method ensures that we always use the correct
