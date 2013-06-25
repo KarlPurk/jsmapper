@@ -66,16 +66,16 @@ JsMapper.Transport.XmlHttpRequest = (function() {
 
         // Set request headers
         if (options.headers) {
-            Object.keys(options.headers).forEach(function(key) {
+            for (var key in options.headers) {
 
                 // Don't attempt to utilise any properties from the prototype chain
                 if (!options.headers.hasOwnProperty(key)) {
-                    return;
+                    continue;
                 }
 
                 // Set the header for this request
                 client.setRequestHeader(key, options.headers[key]);
-            });
+            }
         }
 
         // Send the request

@@ -32,13 +32,13 @@ JsMapper.Mapper.Default = (function() {
      * @returns Object
      */
 	Mapper.prototype.mapProperties = function(object, model) {
-		Object.keys(object).forEach(function(key) {
-			if (!object.hasOwnProperty(key)) {
-				return;
-			}
-			model[key] = object[key];
-		});
-		return model;
+        for (var key in object) {
+            if (!object.hasOwnProperty(key)) {
+                continue;
+            }
+            model[key] = object[key];
+        }
+        return model;
 	};
 
     /**
