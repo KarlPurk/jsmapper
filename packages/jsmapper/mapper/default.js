@@ -38,6 +38,7 @@ JsMapper.Mapper.Default = (function() {
             }
             model[key] = object[key];
         }
+        return model;
 	};
 
     /**

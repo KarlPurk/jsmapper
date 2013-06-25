@@ -1,0 +1,620 @@
+{
+    "project": {
+        "name": "jsmapper"
+    },
+    "files": {
+        "packages\\jsmapper\\mapper\\default.js": {
+            "name": "packages\\jsmapper\\mapper\\default.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "packages\\jsmapper\\mapper\\promise.js": {
+            "name": "packages\\jsmapper\\mapper\\promise.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "packages\\jsmapper\\transport\\default.js": {
+            "name": "packages\\jsmapper\\transport\\default.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "packages\\jsmapper\\transport\\jquery.js": {
+            "name": "packages\\jsmapper\\transport\\jquery.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "packages\\jsmapper\\transport\\xml-http-request.js": {
+            "name": "packages\\jsmapper\\transport\\xml-http-request.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "packages\\jsmapper\\util\\promise-array.js": {
+            "name": "packages\\jsmapper\\util\\promise-array.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "packages\\jsmapper\\loader.js": {
+            "name": "packages\\jsmapper\\loader.js",
+            "modules": {
+                "Loader": 1
+            },
+            "classes": {
+                "Loader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Loader": {
+            "name": "Loader",
+            "submodules": {},
+            "classes": {
+                "Loader": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "packages\\jsmapper\\loader.js",
+            "line": 25,
+            "description": "This module basically allows me to keep the require paths relative to the jsmapper directory.\nWe want to do this so that we can automatically convert those into variables when we build\nthe project for the browser.\n\nE.g:\n - require('./../../loader').load('/path/to/file')\n\ninstead of:\n - require('./file')\n\nThis allows us to convert:\n - require('./../../loader').load('/path/to/file')\n\ninto:\n - JsMapper.Path.To.File\n\nwhich makes it easy to automatically build the project for use in the browser.",
+            "author": "Karl Purkhardt",
+            "date": "15/05/2013"
+        }
+    },
+    "classes": {
+        "Loader": {
+            "name": "Loader",
+            "shortname": "Loader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Loader",
+            "namespace": "",
+            "file": "packages\\jsmapper\\loader.js",
+            "line": 25
+        }
+    },
+    "classitems": [
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 2,
+            "description": "Mapper module.",
+            "type": "{Mapper}",
+            "author": "Karl Purkhardt",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 10,
+            "description": "Mapper constructor",
+            "is_constructor": 1,
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 16,
+            "description": "Map a model to a single object",
+            "params": [
+                {
+                    "name": "object",
+                    "description": ""
+                },
+                {
+                    "name": "model",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "Object"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 28,
+            "description": "Map the properties of one object (item) to another object (model)",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "The object to map a model to"
+                },
+                {
+                    "name": "model",
+                    "description": "The model to map"
+                }
+            ],
+            "return": {
+                "description": "Object"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 44,
+            "description": "Factory method for creating a new collection",
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 52,
+            "description": "Factory method for creating a new model.\nThis needs to be overloaded in object instances.",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\default.js",
+            "line": 63,
+            "description": "Map many objects to a single model.",
+            "params": [
+                {
+                    "name": "objects",
+                    "description": "The objects to map models to"
+                },
+                {
+                    "name": "collection",
+                    "description": "The optional collection to push models into"
+                }
+            ],
+            "return": {
+                "description": "Array Collection of models"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 2,
+            "description": "Promise Mapper module",
+            "type": "{PromiseMapper}",
+            "author": "Karl Purkhardt",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 13,
+            "description": "Promise Mapper constructor",
+            "is_constructor": 1,
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 19,
+            "description": "Extend the default Mapper",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 24,
+            "description": "This method ensures that we always use the correct\nmodel class with promise models.",
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 35,
+            "description": "Set the transport object to use for mapper requests.",
+            "params": [
+                {
+                    "name": "transport",
+                    "description": ""
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 43,
+            "description": "Returns the current transport object",
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 54,
+            "description": "Perform a request and map the result to models",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The mapper transport request options"
+                },
+                {
+                    "name": "loadMethod",
+                    "description": "The load method callback to use to map the result to models"
+                },
+                {
+                    "name": "promise",
+                    "description": "The promise that we will fulfill with this request"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "*"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 66,
+            "description": "Callback for a successful request",
+            "params": [
+                {
+                    "name": "response",
+                    "description": ""
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 86,
+            "description": "Callback for a failed request",
+            "params": [
+                {
+                    "name": "response",
+                    "description": ""
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 106,
+            "description": "Fetch a single object and map it to a model",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The mapper transport request options"
+                }
+            ],
+            "return": {
+                "description": "Object"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\mapper\\promise.js",
+            "line": 115,
+            "description": "Fetch an array of objects and map them to a specified model",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The mapper transport request options"
+                }
+            ],
+            "return": {
+                "description": "PromiseArray"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\default.js",
+            "line": 2,
+            "description": "Mapper Transport module",
+            "type": "{MapperTransport}",
+            "author": "Karl Purkhardt",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\default.js",
+            "line": 10,
+            "description": "MapperTransport constructor",
+            "is_constructor": 1,
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\default.js",
+            "line": 16,
+            "description": "Transport objects generally accept a config/options object.\nThis method provides a convenient hook for validating the\nconfig/options object to ensure it contains required attributes.\nYou should throw an exception if a required option is not set.",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The transport config/options object"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\default.js",
+            "line": 33,
+            "description": "The public method for performing a request on the transport object.\nThis method will validate the options before performing the actual request.",
+            "params": [
+                {
+                    "name": "options",
+                    "description": "The transport config/options object"
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\default.js",
+            "line": 43,
+            "description": "Performs the request using the options passed in.\nYou should overload this method in objects that extend this base.",
+            "params": [
+                {
+                    "name": "options",
+                    "description": ""
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\jquery.js",
+            "line": 7,
+            "description": "JQueryMapperTransport constructor",
+            "is_constructor": 1,
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\jquery.js",
+            "line": 13,
+            "description": "Extend the default mapper transport object.",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\jquery.js",
+            "line": 18,
+            "description": "Perform the request using jQuery.ajax and pass the options directly to this method.",
+            "params": [
+                {
+                    "name": "options",
+                    "description": ""
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\xml-http-request.js",
+            "line": 7,
+            "description": "XmlHttpRequestMapperTransport",
+            "is_constructor": 1,
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\xml-http-request.js",
+            "line": 13,
+            "description": "Extend the default mapper transport object.",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\transport\\xml-http-request.js",
+            "line": 27,
+            "description": "Perform the request using XMLHttpRequest.",
+            "params": [
+                {
+                    "name": "options",
+                    "description": ""
+                }
+            ],
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\util\\promise-array.js",
+            "line": 5,
+            "description": "Promise Array constructor.",
+            "is_constructor": 1,
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\util\\promise-array.js",
+            "line": 13,
+            "description": "Extend the array prototype",
+            "class": "Loader"
+        },
+        {
+            "file": "packages\\jsmapper\\loader.js",
+            "line": 29,
+            "description": "Loads a file using require()",
+            "itemtype": "method",
+            "name": "load",
+            "params": [
+                {
+                    "name": "path",
+                    "description": "The path to the file",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The loaded file",
+                "type": "*"
+            },
+            "class": "Loader",
+            "module": "Loader"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\default.js:16"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\default.js:28"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\default.js:44"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\default.js:63"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\promise.js:24"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\promise.js:43"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\promise.js:54"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\promise.js:106"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\mapper\\promise.js:115"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " packages\\jsmapper\\loader.js:1"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " packages\\jsmapper\\loader.js:29"
+        },
+        {
+            "message": "Missing item type\nMapper module.",
+            "line": " packages\\jsmapper\\mapper\\default.js:2"
+        },
+        {
+            "message": "Missing item type\nMapper constructor",
+            "line": " packages\\jsmapper\\mapper\\default.js:10"
+        },
+        {
+            "message": "Missing item type\nMap a model to a single object",
+            "line": " packages\\jsmapper\\mapper\\default.js:16"
+        },
+        {
+            "message": "Missing item type\nMap the properties of one object (item) to another object (model)",
+            "line": " packages\\jsmapper\\mapper\\default.js:28"
+        },
+        {
+            "message": "Missing item type\nFactory method for creating a new collection",
+            "line": " packages\\jsmapper\\mapper\\default.js:44"
+        },
+        {
+            "message": "Missing item type\nFactory method for creating a new model.\nThis needs to be overloaded in object instances.",
+            "line": " packages\\jsmapper\\mapper\\default.js:52"
+        },
+        {
+            "message": "Missing item type\nMap many objects to a single model.",
+            "line": " packages\\jsmapper\\mapper\\default.js:63"
+        },
+        {
+            "message": "Missing item type\nPromise Mapper module",
+            "line": " packages\\jsmapper\\mapper\\promise.js:2"
+        },
+        {
+            "message": "Missing item type\nPromise Mapper constructor",
+            "line": " packages\\jsmapper\\mapper\\promise.js:13"
+        },
+        {
+            "message": "Missing item type\nExtend the default Mapper",
+            "line": " packages\\jsmapper\\mapper\\promise.js:19"
+        },
+        {
+            "message": "Missing item type\nThis method ensures that we always use the correct\nmodel class with promise models.",
+            "line": " packages\\jsmapper\\mapper\\promise.js:24"
+        },
+        {
+            "message": "Missing item type\nSet the transport object to use for mapper requests.",
+            "line": " packages\\jsmapper\\mapper\\promise.js:35"
+        },
+        {
+            "message": "Missing item type\nReturns the current transport object",
+            "line": " packages\\jsmapper\\mapper\\promise.js:43"
+        },
+        {
+            "message": "Missing item type\nPerform a request and map the result to models",
+            "line": " packages\\jsmapper\\mapper\\promise.js:54"
+        },
+        {
+            "message": "Missing item type\nCallback for a successful request",
+            "line": " packages\\jsmapper\\mapper\\promise.js:66"
+        },
+        {
+            "message": "Missing item type\nCallback for a failed request",
+            "line": " packages\\jsmapper\\mapper\\promise.js:86"
+        },
+        {
+            "message": "Missing item type\nFetch a single object and map it to a model",
+            "line": " packages\\jsmapper\\mapper\\promise.js:106"
+        },
+        {
+            "message": "Missing item type\nFetch an array of objects and map them to a specified model",
+            "line": " packages\\jsmapper\\mapper\\promise.js:115"
+        },
+        {
+            "message": "Missing item type\nMapper Transport module",
+            "line": " packages\\jsmapper\\transport\\default.js:2"
+        },
+        {
+            "message": "Missing item type\nMapperTransport constructor",
+            "line": " packages\\jsmapper\\transport\\default.js:10"
+        },
+        {
+            "message": "Missing item type\nTransport objects generally accept a config/options object.\nThis method provides a convenient hook for validating the\nconfig/options object to ensure it contains required attributes.\nYou should throw an exception if a required option is not set.",
+            "line": " packages\\jsmapper\\transport\\default.js:16"
+        },
+        {
+            "message": "Missing item type\nThe public method for performing a request on the transport object.\nThis method will validate the options before performing the actual request.",
+            "line": " packages\\jsmapper\\transport\\default.js:33"
+        },
+        {
+            "message": "Missing item type\nPerforms the request using the options passed in.\nYou should overload this method in objects that extend this base.",
+            "line": " packages\\jsmapper\\transport\\default.js:43"
+        },
+        {
+            "message": "Missing item type\nJQueryMapperTransport constructor",
+            "line": " packages\\jsmapper\\transport\\jquery.js:7"
+        },
+        {
+            "message": "Missing item type\nExtend the default mapper transport object.",
+            "line": " packages\\jsmapper\\transport\\jquery.js:13"
+        },
+        {
+            "message": "Missing item type\nPerform the request using jQuery.ajax and pass the options directly to this method.",
+            "line": " packages\\jsmapper\\transport\\jquery.js:18"
+        },
+        {
+            "message": "Missing item type\nXmlHttpRequestMapperTransport",
+            "line": " packages\\jsmapper\\transport\\xml-http-request.js:7"
+        },
+        {
+            "message": "Missing item type\nExtend the default mapper transport object.",
+            "line": " packages\\jsmapper\\transport\\xml-http-request.js:13"
+        },
+        {
+            "message": "Missing item type\nPerform the request using XMLHttpRequest.",
+            "line": " packages\\jsmapper\\transport\\xml-http-request.js:27"
+        },
+        {
+            "message": "Missing item type\nPromise Array constructor.",
+            "line": " packages\\jsmapper\\util\\promise-array.js:5"
+        },
+        {
+            "message": "Missing item type\nExtend the array prototype",
+            "line": " packages\\jsmapper\\util\\promise-array.js:13"
+        }
+    ]
+}

@@ -158,16 +158,16 @@ JsMapper.Transport.XmlHttpRequest = (function() {
 
         // Set request headers
         if (options.headers) {
-            Object.keys(options.headers).forEach(function(key) {
+            for (var key in options.headers) {
 
                 // Don't attempt to utilise any properties from the prototype chain
                 if (!options.headers.hasOwnProperty(key)) {
-                    return;
+                    continue;
                 }
 
                 // Set the header for this request
                 client.setRequestHeader(key, options.headers[key]);
-            });
+            }
         }
 
         // Send the request
@@ -229,13 +229,13 @@ JsMapper.Mapper.Default = (function() {
      * @returns Object
      */
 	Mapper.prototype.mapProperties = function(object, model) {
-		Object.keys(object).forEach(function(key) {
-			if (!object.hasOwnProperty(key)) {
-				return;
-			}
-			model[key] = object[key];
-		});
-		return model;
+        for (var key in object) {
+            if (!object.hasOwnProperty(key)) {
+                continue;
+            }
+            model[key] = object[key];
+        }
+        return model;
 	};
 
     /**

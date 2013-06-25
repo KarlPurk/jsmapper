@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>packages\jsmapper\mapper\default.js - jsmapper</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title="jsmapper"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Loader.html">Loader</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/Loader.html">Loader</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: packages\jsmapper\mapper\default.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+var JsMapper = {Mapper: {}};
+/**
+ * Mapper module.
+ * @type {Mapper}
+ * @author Karl Purkhardt
+ */
+JsMapper.Mapper.Default = (function() {
+    &#x27;use strict&#x27;;
+
+    /**
+     * Mapper constructor
+     * @constructor
+     */
+	var Mapper = function() {};
+
+    /**
+     * Map a model to a single object
+     * @param object
+     * @param model
+     * @returns Object
+     */
+	Mapper.prototype.load = function(object, model) {
+		model = model || this.createModel();
+		model = this.mapProperties(object, model);
+		return model;
+	};
+
+    /**
+     * Map the properties of one object (item) to another object (model)
+     * @param object The object to map a model to
+     * @param model The model to map
+     * @returns Object
+     */
+	Mapper.prototype.mapProperties = function(object, model) {
+        for (var key in object) {
+            if (!object.hasOwnProperty(key)) {
+                continue;
+            }
+            model[key] = object[key];
+        }
+        return model;
+	};
+
+    /**
+     * Factory method for creating a new collection
+     * @returns {Array}
+     */
+	Mapper.prototype.createCollection = function() {
+		return [];
+	};
+
+    /**
+     * Factory method for creating a new model.
+     * This needs to be overloaded in object instances.
+     */
+	Mapper.prototype.createModel = function() {
+		throw {
+            type: &#x27;MapperException&#x27;,
+			message: &#x27;You must provide a model by overloading createModel&#x27;
+		};
+	};
+
+    /**
+     * Map many objects to a single model.
+     * @param objects The objects to map models to
+     * @param collection The optional collection to push models into
+     * @returns Array Collection of models
+     */
+	Mapper.prototype.loadMany = function(objects, collection) {
+		var self = this;
+		collection = collection || this.createCollection();
+		objects.forEach(function(item) {
+			collection.push(self.load(item));
+		});
+		return collection;
+	};
+
+    module.exports = Mapper;
+})();
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
